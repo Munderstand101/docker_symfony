@@ -8,20 +8,25 @@ services:
         volumes:
             - ./project:/var/www/html
 
-#    mailer:
-#        image: schickling/mailcatcher
-#        ports: [1025, 1080]
-#
-#    database:
-#        image: postgres:13-alpine
-#        environment:
-#            POSTGRES_DB: app
-#            POSTGRES_PASSWORD: ChangeMe
-#            POSTGRES_USER: symfony
-#        volumes:
-#            - db-data:/var/lib/postgresql/data:rw
-#        ports:
-#            - "5432"
+    database:
+        image: mariadb:latest
+        environment:
+            MYSQL_ROOT_PASSWORD: Ha4kunaM4t4ta
+        volumes:
+            - db-data:/var/lib/mariadb/data:rw
+        ports:
+            - "3306"
+
+    phpmyadmin:
+        image: phpmyadmin/phpmyadmin:latest
+        container_name: myapp_phpmyadmin
+        ports:
+            - 8080:80
+        environment:
+            PMA_HOST: database
+            MYSQL_ROOT_PASSWORD: Ha4kunaM4t4ta
+#        networks:
+#            - myapp
 
 volumes:
   db-data:
