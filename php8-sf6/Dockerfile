@@ -18,7 +18,7 @@ RUN curl -sS https://get.symfony.com/cli/installer | bash \
 RUN docker-php-ext-configure \
             intl \
     &&  docker-php-ext-install \
-            pdo pdo_mysql pdo_pgsql opcache intl zip calendar dom mbstring gd xsl ldap
+            pdo pdo_mysql pdo_pgsql opcache intl zip calendar dom mbstring gd xsl
 
 RUN pecl install apcu && docker-php-ext-enable apcu
 
